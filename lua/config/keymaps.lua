@@ -38,7 +38,6 @@ mapkey("<leader>pa", "echo expand('%:p')", "n") -- Show Full File Path
 -- Notes
 mapkey("<leader>ng", "Neorg workspace general", "n")
 mapkey("<leader>nw", "Neorg workspace work", "n")
-mapkey("<leader>ny", "Neorg workspace youtube", "n")
 
 -- Indenting
 vim.keymap.set("v", "<", "<gv", { silent = true, noremap = true })
@@ -54,5 +53,5 @@ api.nvim_set_keymap("n", "<leader>zm", ":TZMinimalist<CR>", {})
 api.nvim_set_keymap("n", "<leader>za", ":TZAtaraxis<CR>", {})
 
 -- Comments
-api.nvim_set_keymap("n", "<C-_>", "gtc", { noremap = false })
-api.nvim_set_keymap("v", "<C-_>", "goc", { noremap = false })
+api.nvim_set_keymap("n", "<C-c>", "gtc", { noremap = false })
+api.nvim_set_keymap("v", "<C-c>", "goc", { noremap = false })
