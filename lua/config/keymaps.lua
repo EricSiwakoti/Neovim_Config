@@ -19,31 +19,32 @@ mapkey("<C-h>", "wincmd h", "t") -- Navigate Left
 mapkey("<C-j>", "wincmd j", "t") -- Navigate Down
 mapkey("<C-k>", "wincmd k", "t") -- Navigate Up
 mapkey("<C-l>", "wincmd l", "t") -- Navigate Right
-mapkey("<C-h>", "TmuxNavigateLeft", "n") -- Navigate Left
-mapkey("<C-j>", "TmuxNavigateDown", "n") -- Navigate Down
-mapkey("<C-k>", "TmuxNavigateUp", "n") -- Navigate Up
-mapkey("<C-l>", "TmuxNavigateRight", "n") -- Navigate Right
 
 -- Window Management
 mapkey("<leader>sv", "vsplit", "n") -- Split Vertically
 mapkey("<leader>sh", "split", "n") -- Split Horizontally
-mapkey("<C-Up>", "resize +2", "n")
-mapkey("<C-Down>", "resize -2", "n")
-mapkey("<C-Left>", "vertical resize +2", "n")
-mapkey("<C-Right>", "vertical resize -2", "n")
+mapkey("<C-Up>", "resize +2", "n", {noremap = true, silent = true})
+mapkey("<C-Down>", "resize -2", "n", {noremap = true, silent = true})
+mapkey("<C-Left>", "vertical resize +2", "n", {noremap = true, silent = true})
+mapkey("<C-Right>", "vertical resize -2", "n", {noremap = true, silent = true})
 
 -- Show Full File-Path
 mapkey("<leader>pa", "echo expand('%:p')", "n") -- Show Full File Path
-
--- Notes
-mapkey("<leader>ng", "Neorg workspace general", "n")
-mapkey("<leader>nw", "Neorg workspace work", "n")
 
 -- Indenting
 vim.keymap.set("v", "<", "<gv", { silent = true, noremap = true })
 vim.keymap.set("v", ">", ">gv", { silent = true, noremap = true })
 
 local api = vim.api
+
+-- Move Line Down
+api.nvim_set_keymap('n', '<M-j>', ':m .+1<CR>', { noremap = true, silent = true })
+-- Move Line Up
+api.nvim_set_keymap('n', '<M-k>', ':m .-2<CR>', { noremap = true, silent = true })
+-- Move Code Block Down
+api.nvim_set_keymap('v', '<M-j>', ':m \'>+1<CR>gv=gv', { noremap = true, silent = true })
+-- Move Code Block Up
+api.nvim_set_keymap('v', '<M-k>', ':m \'<-2<CR>gv=gv', { noremap = true, silent = true })
 
 -- Zen Mode
 api.nvim_set_keymap("n", "<leader>zn", ":TZNarrow<CR>", {})
@@ -55,3 +56,7 @@ api.nvim_set_keymap("n", "<leader>za", ":TZAtaraxis<CR>", {})
 -- Comments
 api.nvim_set_keymap("n", "<C-c>", "gtc", { noremap = false })
 api.nvim_set_keymap("v", "<C-c>", "goc", { noremap = false })
+
+-- Cellular Automaton
+vim.keymap.set("n", "<leader>fmr", "<cmd>CellularAutomaton make_it_rain<CR>")
+vim.keymap.set("n", "<leader>gol", "<cmd>CellularAutomaton game_of_life<CR>")
