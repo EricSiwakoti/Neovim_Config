@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require('config.globals')
 require('config.options')
 require('config.keymaps')
+require('config.autocmds')
 
 local plugins = "plugins"
 
@@ -31,6 +32,7 @@ local opts = {
 	"matchparen",
 	"netrw",
 	"netrwPlugin",
+  "shada",
 	"tarPlugin",
 	"tohtml",
 	"tutor",
