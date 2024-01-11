@@ -33,7 +33,7 @@ return {
       enable = true,
       global = false,
       restrict_above_cwd = false,
-    },
+     },
     },
     modified = {
         enable = true,
@@ -49,6 +49,7 @@ return {
             info = " ",
         },
     },
+
     config = function()
         require("nvim-tree").setup({
         view = {
@@ -56,7 +57,7 @@ return {
             width = 30,
             signcolumn = "yes",
             side = "left"
-       },
+        },
         trash = {
              cmd = "powershell Remove-Item -Confirm:$false -Path",
              require_confirm = true
