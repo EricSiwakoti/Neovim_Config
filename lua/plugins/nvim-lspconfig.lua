@@ -96,15 +96,15 @@ local config = function()
 
 	local flake8 = require("efmls-configs.linters.flake8")
 	local black = require("efmls-configs.formatters.black")
-	local eslint = require("efmls-configs.linters.eslint")
-	local prettier_d = require("efmls-configs.formatters.prettier_d")
+	local eslint_d = require("efmls-configs.linters.eslint_d")
+	local prettierd = require("efmls-configs.formatters.prettier_d")
 	local fixjson = require("efmls-configs.formatters.fixjson")
 	local shellcheck = require("efmls-configs.linters.shellcheck")
 	local shfmt = require("efmls-configs.formatters.shfmt")
 	local hadolint = require("efmls-configs.linters.hadolint")
 	local solhint = require("efmls-configs.linters.solhint")
 	local cpplint = require("efmls-configs.linters.cpplint")
-	local clangformat = require("efmls-configs.formatters.clang_format")
+	local clang_format = require("efmls-configs.formatters.clang_format")
 
 	-- Configure efm server
 	lspconfig.efm.setup({
@@ -138,22 +138,22 @@ local config = function()
 		settings = {
 			languages = {
 				python = { flake8, black },
-				typescript = { eslint, prettier_d },
-				json = { eslint, fixjson },
-				jsonc = { eslint, fixjson },
+				typescript = { eslint_d, prettierd },
+				json = { eslint_d, fixjson },
+				jsonc = { eslint_d, fixjson },
 				sh = { shellcheck, shfmt },
-				javascript = { eslint, prettier_d },
-				javascriptreact = { eslint, prettier_d },
-				typescriptreact = { eslint, prettier_d },
-				svelte = { eslint, prettier_d },
-				vue = { eslint, prettier_d },
-				markdown = { prettier_d },
-				docker = { hadolint, prettier_d },
+				javascript = { eslint_d, prettierd },
+				javascriptreact = { eslint_d, prettierd },
+				typescriptreact = { eslint_d, prettierd },
+				svelte = { eslint_d, prettierd },
+				vue = { eslint_d, prettierd },
+				markdown = { prettierd },
+				docker = { hadolint, prettierd },
 				solidity = { solhint },
-				html = { prettier_d },
-				css = { prettier_d },
-				c = { clangformat, cpplint },
-				cpp = { clangformat, cpplint },
+				html = { prettierd },
+				css = { prettierd },
+				c = { clang_format, cpplint },
+				cpp = { clang_format, cpplint },
 			},
 		},
 	})

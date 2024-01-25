@@ -1,5 +1,5 @@
 local opts = {
-  -- Whatever language/tech we write inside this block, it will automatically get installed
+  	-- Whatever language/tech we write inside this block, it will automatically get installed
 	ensure_installed = {
 		"efm",
 		"bashls",
@@ -9,8 +9,8 @@ local opts = {
 		"pyright",
 		"emmet_ls",
 		"jsonls",
-    "clangd",
-    "dockerls",
+    	"clangd",
+    	"dockerls",
 	},
 
 	automatic_installation = true,

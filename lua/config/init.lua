@@ -25,6 +25,7 @@ local opts = {
 	install = {
 		colorscheme = {"carbonfox"}
 	},
+	checker = { enabled = true },
 	rtp = {
 		disabled_plugins = {
 	"gzip",
@@ -32,7 +33,7 @@ local opts = {
 	"matchparen",
 	"netrw",
 	"netrwPlugin",
-  "shada",
+  	"shada",
 	"tarPlugin",
 	"tohtml",
 	"tutor",
@@ -42,7 +43,6 @@ local opts = {
 	change_detection = {
 		notify = true,
 	},
-
 }
 
 require("lazy").setup('plugins', opts)
