@@ -11,6 +11,7 @@ local opts = {
 		"jsonls",
     	"clangd",
     	"dockerls",
+		"gopls", 
 	},
 
 	automatic_installation = true,
