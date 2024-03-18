@@ -94,6 +94,12 @@ local config = function()
 		},
 	})
 
+	-- Go
+	lspconfig.gopls.setup({
+   		 capabilities = capabilities,
+   		 on_attach = on_attach,
+	})
+
 	local flake8 = require("efmls-configs.linters.flake8")
 	local black = require("efmls-configs.formatters.black")
 	local eslint_d = require("efmls-configs.linters.eslint_d")
@@ -105,6 +111,8 @@ local config = function()
 	local solhint = require("efmls-configs.linters.solhint")
 	local cpplint = require("efmls-configs.linters.cpplint")
 	local clang_format = require("efmls-configs.formatters.clang_format")
+	local goimports = require("efmls-configs.formatters.goimports")
+	local golangcilint = require("efmls-configs.linters.golangcilint")
 
 	-- Configure efm server
 	lspconfig.efm.setup({
@@ -126,6 +134,7 @@ local config = function()
 			"css",
 			"c",
 			"cpp",
+			"go",
 		},
 		init_options = {
 			documentFormatting = true,
@@ -154,6 +163,7 @@ local config = function()
 				css = { prettierd },
 				c = { clang_format, cpplint },
 				cpp = { clang_format, cpplint },
+				go = { goimports, golangcilint },
 			},
 		},
 	})
