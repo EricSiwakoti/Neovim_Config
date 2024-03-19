@@ -112,7 +112,7 @@ local config = function()
 	local cpplint = require("efmls-configs.linters.cpplint")
 	local clang_format = require("efmls-configs.formatters.clang_format")
 	local goimports = require("efmls-configs.formatters.goimports")
-	local golangcilint = require("efmls-configs.linters.golangcilint")
+	local golangcilint = require("efmls-configs.linters.golangci_lint")
 
 	-- Configure efm server
 	lspconfig.efm.setup({
