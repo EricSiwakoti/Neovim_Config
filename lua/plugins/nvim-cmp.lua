@@ -49,6 +49,7 @@ return {
 			version = "2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
 		},
     	'hrsh7th/cmp-nvim-lsp',
+		'saadparwaiz1/cmp_luasnip',
     	'rafamadriz/friendly-snippets',
 	},
 }

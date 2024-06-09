@@ -8,5 +8,4 @@ vim.api.nvim_set_keymap('n', '<leader>tm', ':split | terminal<CR>', { noremap = 
 -- Resize the terminal window
 vim.cmd([[
   autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
-  autocmd TermOpen * resize 12
 ]])
