@@ -104,8 +104,6 @@ return {
           },
         },
 
-        cpp = dap_config.c,
-
         javascript = {
           adapter = {
             type = 'executable',
@@ -151,7 +149,6 @@ return {
 
       dap.adapters.codelldb = dap_config.c.adapter
       dap.configurations.c = dap_config.c.configurations
-      dap.configurations.cpp = dap_config.cpp.configurations
 
       dap.adapters.node2 = dap_config.javascript.adapter
       dap.configurations.javascript = dap_config.javascript.configurations
@@ -176,9 +173,12 @@ return {
   {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = { "williamboman/mason.nvim", "mfussenegger/nvim-dap" },
+    lazy = false,
     config = function()
+      require("mason").setup()
       require("mason-nvim-dap").setup({
         ensure_installed = { "python", "delve", "codelldb", "bashdb", "node2" },
+        automatic_installation = true,
       })
     end,
   },
