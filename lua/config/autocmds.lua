@@ -4,16 +4,26 @@ local autocmd, command, cmd, fn =
 -- Auto format on save
 local lsp_fmt_group = vim.api.nvim_create_augroup("LspFormattingGroup", {})
 vim.api.nvim_create_autocmd("BufWritePre", {
-	group = lsp_fmt_group,
-	callback = function()
-		local efm = vim.lsp.get_active_clients({ name = "efm" })
+    group = lsp_fmt_group,
+    callback = function()
+        local clients = vim.lsp.get_active_clients()
+        local has_formatter = false
 
-		if vim.tbl_isempty(efm) then
-			return
-		end
+        for _, client in ipairs(clients) do
+            if client.resolved_capabilities.document_formatting then
+                vim.lsp.buf.formatting_sync(nil, 1000)
+                has_formatter = true
+                break
+            end
+        end
 
-		vim.lsp.buf.format()
-	end,
+        if not has_formatter then
+            local efm = vim.lsp.get_active_clients({ name = "efm" })
+            if not vim.tbl_isempty(efm) then
+                vim.lsp.buf.format()
+            end
+        end
+    end,
 })
 
 -- Highlight on yank
