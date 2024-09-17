@@ -15,13 +15,6 @@ M.on_attach = function(client, bufnr)
 	mapkey("<leader>pd", "Lspsaga diagnostic_jump_prev", "n", opts) -- jump to prev diagnostic in buffer
 	mapkey("<leader>nd", "Lspsaga diagnostic_jump_next", "n", opts) -- jump to next diagnostic in buffer
 	mapkey("K", "Lspsaga hover_doc", "n", opts) -- show documentation for what is under cursor
-
-	if client.name == "pyright" then
-		mapkey("<leader>oi", "PyrightOrganizeImports", "n", opts) -- organise imports
-		mapkey("<leader>db", "DapToggleBreakpoint", "n", opts) -- toggle breakpoint
-		mapkey("<leader>dr", "DapContinue", "n", opts) -- continue/invoke debugger
-		mapkey("<leader>dt", "lua require('dap-python').test_method()", "n", opts) -- run tests
-	end
 end
 
 return M
