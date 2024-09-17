@@ -21,5 +21,10 @@ return {
 	"williamboman/mason-lspconfig.nvim",
 	opts = opts,
 	event = "BufReadPre",
+	lazy = false,
 	dependencies = "williamboman/mason.nvim",
+	config = function()
+		require("mason").setup()
+		require("mason-lspconfig").setup(opts)
+	end,
 }
