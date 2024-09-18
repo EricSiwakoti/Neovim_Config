@@ -29,19 +29,19 @@ return {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
     dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+      { "zbirenbaum/copilot.lua" }, 
+      { "nvim-lua/plenary.nvim" }, -- For curl, log wrapper
     },
-    build = "make tiktoken", -- Only on MacOS or Linux
     opts = {
       debug = true, -- Enable debugging
       -- See Configuration section for rest
     },
-    lazy = false, -- Ensure the plugin is not lazy-loaded
+    lazy = false, 
     config = function()
       local copilot_chat = require("CopilotChat")
 
       copilot_chat.setup({
+        language = "en", 
         -- Additional configuration options can be added here
       })
 

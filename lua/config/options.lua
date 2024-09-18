@@ -23,8 +23,8 @@ opt.cursorline = true
 opt.cursorcolumn = true
 opt.signcolumn = "yes"
 opt.cmdheight = 1
-opt.laststatus = 2
-opt.showtabline = 2
+-- opt.laststatus = 2
+-- opt.showtabline = 2
 opt.scrolloff = 10
 opt.completeopt = "menuone,noinsert,noselect"
 
