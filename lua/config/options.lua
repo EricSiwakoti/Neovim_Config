@@ -19,13 +19,22 @@ opt.number = true
 opt.relativenumber = true
 opt.termguicolors = true
 opt.colorcolumn = '100'
+opt.cursorline = true
+opt.cursorcolumn = true
 opt.signcolumn = "yes"
 opt.cmdheight = 1
+opt.laststatus = 2
+opt.showtabline = 2
 opt.scrolloff = 10
 opt.completeopt = "menuone,noinsert,noselect"
 
 -- Behaviour
 opt.hidden = true
+opt.autoindent = true
+opt.autoread = true
+opt.autowrite = true
+opt.wildmenu = true
+opt.wildmode = "longest:full,full"
 opt.errorbells = false
 opt.swapfile = false
 opt.backup = false
