@@ -10,6 +10,7 @@ local function format_buffer()
         if client.server_capabilities and client.server_capabilities.documentFormattingProvider then
             vim.lsp.buf.format({ async = true, client_id = client.id })
             has_formatter = true
+            vim.notify("Formatting buffer with " .. client.name, vim.log.levels.INFO, { title = "LSP" })
             break
         end
     end
@@ -20,41 +21,6 @@ local function format_buffer()
         if #efm_clients > 0 then
             vim.lsp.buf.format({ async = true })
             has_formatter = true
-        end
-    end
-
-    -- Fallback formatting for specific filetypes
-    if not has_formatter then
-        local filetype = vim.bo.filetype
-        local fallback_commands = {
-            python = "black %",
-            typescript = "prettier --write %",
-            javascript = "prettier --write %",
-            javascriptreact = "prettier --write %",
-            typescriptreact = "prettier --write %",
-            svelte = "prettier --write %",
-            vue = "prettier --write %",
-            markdown = "prettier --write %",
-            html = "prettier --write %",
-            css = "prettier --write %",
-            docker = "dockerfmt %",
-            json = "jq . %",
-            jsonc = "jq . %",
-            sh = "shfmt -w %",
-            solidity = "solidity-formatter %",
-            c = "clang-format -i %",
-            cpp = "clang-format -i %",
-            go = "goimports -w %",
-        }
-
-        local cmd = fallback_commands[filetype]
-        if cmd and vim.fn.executable(vim.split(cmd, " ")[1]) == 1 then
-            local success, result = pcall(vim.fn.systemlist, cmd)
-            if not success then
-                vim.notify("Error running formatter for filetype: " .. filetype .. "\n" .. vim.inspect(result), vim.log.levels.ERROR)
-            end
-        else
-            vim.notify("No formatter available or executable for filetype: " .. filetype, vim.log.levels.WARN)
         end
     end
 end
