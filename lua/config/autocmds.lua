@@ -8,9 +8,9 @@ local function format_buffer()
     -- Check if any active LSP clients provide formatting
     for _, client in ipairs(clients) do
         if client.server_capabilities and client.server_capabilities.documentFormattingProvider then
+            vim.notify("Formatting buffer with " .. client.name, vim.log.levels.INFO, { title = "LSP" })
             vim.lsp.buf.format({ async = true, client_id = client.id })
             has_formatter = true
-            vim.notify("Formatting buffer with " .. client.name, vim.log.levels.INFO, { title = "LSP" })
             break
         end
     end
@@ -19,8 +19,11 @@ local function format_buffer()
     if not has_formatter then
         local efm_clients = vim.lsp.get_active_clients({ name = "efm" })
         if #efm_clients > 0 then
+            vim.notify("Formatting buffer with efm", vim.log.levels.INFO, { title = "LSP" })
             vim.lsp.buf.format({ async = true })
             has_formatter = true
+        else
+            vim.notify("No formatter found", vim.log.levels.WARN, { title = "LSP" })
         end
     end
 end
